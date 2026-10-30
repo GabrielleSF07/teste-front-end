@@ -46,16 +46,4 @@
         cursor: pointer;
     }
 
-    @media (max-width: 600px) {
-        min-height: 340px;
-
-        h1 {
-            font-size: 32px;
-        }
-
-        p {
-            font-size: 22px;
-            margin-bottom: 28px;
-        }
-    }
 }

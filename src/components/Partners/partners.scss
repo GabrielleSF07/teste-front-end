@@ -40,9 +40,4 @@
         }
     }
 
-    @media (max-width: 700px) {
-        grid-template-columns: 1fr;
-
-        &__content { padding: 32px; }
-    }
 }

@@ -75,13 +75,5 @@
         p { margin: 0; font-size: 12px; font-weight: 300; }
     }
 
-    @media (max-width: 1000px) {
-        &__container { grid-template-columns: 1fr; gap: 32px; }
-        &__brand { padding: 0 0 32px; border-right: 0; border-bottom: 1px solid #d9d9d9; }
-        &__navigation { padding-left: 0; }
-    }
 
-    @media (max-width: 520px) {
-        &__navigation { grid-template-columns: 1fr; gap: 28px; }
-    }
 }

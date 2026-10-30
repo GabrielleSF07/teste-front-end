@@ -68,14 +68,5 @@
         input { width: 14px; height: 14px; margin: 0; accent-color: var(--color-yellow); }
     }
 
-    @media (max-width: 1100px) {
-        &__container { gap: 32px; grid-template-columns: 1fr; }
-    }
 
-    @media (max-width: 520px) {
-        &__intro h2 { font-size: 24px; }
-        &__fields { grid-template-columns: 1fr; gap: 12px; }
-        &__fields input, &__fields button { min-height: 44px; }
-        &__consent { margin-top: 12px; }
-    }
 }
