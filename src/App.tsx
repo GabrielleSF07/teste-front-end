@@ -5,6 +5,7 @@ import Products from "./components/Products/Products";
 import Partners from "./components/Partners/Partners";
 import Brands from "./components/Brands/Brands";
 import Newsletter from "./components/Newsletter/Newsletter";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
     return (
@@ -19,6 +20,7 @@ export default function App() {
                 <Products showFilters={false} id="produtos-marcas" />
                 <Newsletter />
             </main>
+            <Footer />
         </>
     )
 }
