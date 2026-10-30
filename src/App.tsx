@@ -15,6 +15,7 @@ export default function App() {
                 <Products />
                 <Partners />
                 <Brands />
+                <Products showFilters={false} id="produtos-marcas" />
             </main>
         </>
     )

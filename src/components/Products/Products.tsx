@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import data from '../../data/products.json'
 import phone from '../../assets/images/celular.svg'
 import './products.scss'
@@ -7,7 +7,15 @@ type Product = (typeof data.products)[number]
 const currency = (price: number) => price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 const filters = ['CELULAR', 'ACESSÓRIOS', 'TABLETS', 'NOTEBOOKS', 'TVS', 'VER TODOS']
 
-export default function Products() {
+type ProductsProps = {
+  showFilters?: boolean
+  id?: string
+}
+
+export default function Products({ showFilters = true, id = 'produtos' }: ProductsProps) {
+  const titleId = useId()
+  const modalTitleId = useId()
+  const [showAll, setShowAll] = useState(false)
   const track = useRef<HTMLUListElement>(null)
   const dialog = useRef<HTMLDialogElement>(null)
   const [selected, setSelected] = useState<Product | null>(null)
@@ -31,7 +39,7 @@ export default function Products() {
       list.removeEventListener('scroll', updateEdges)
       observer.disconnect()
     }
-  }, [filter])
+  }, [filter, showAll])
 
   function openProduct(product: Product) {
     setSelected(product)
@@ -54,20 +62,22 @@ export default function Products() {
   }
 
   return (
-    <section className="products" aria-labelledby="products-title" id="produtos">
-      <h2 id="products-title">Produtos relacionados</h2>
-      <div className="products__filters" aria-label="Filtrar produtos">
+    <section className="products" aria-labelledby={titleId} id={id}>
+      <h2 id={titleId}>Produtos relacionados</h2>
+      {showFilters ? <div className="products__filters" aria-label="Filtrar produtos">
         {filters.map((item) => (
           <button key={item} type="button" aria-pressed={filter === item} onClick={() => {
             setFilter(item)
             track.current?.scrollTo({ left: 0 })
           }}>{item}</button>
         ))}
-      </div>
+      </div> : <button className="products__view-all" type="button" aria-expanded={showAll} onClick={() => setShowAll(value => !value)}>
+        {showAll ? 'Ver menos' : 'Ver todos'}
+      </button>}
       {products.length ? (
         <div className="products__carousel">
-          <button className="products__arrow products__arrow--previous" type="button" aria-label="Produtos anteriores" disabled={edges.start} onClick={() => move(-1)}>‹</button>
-          <ul className="products__list" ref={track}>
+          {!showAll && <button className="products__arrow products__arrow--previous" type="button" aria-label="Produtos anteriores" disabled={edges.start} onClick={() => move(-1)}>‹</button>}
+          <ul className={`products__list${showAll ? ' products__list--all' : ''}`} ref={track}>
             {products.map((product) => (
               <li className="product-card" key={product.productName}>
                 <button className="product-card__details" type="button" onClick={() => openProduct(product)}>
@@ -81,10 +91,10 @@ export default function Products() {
               </li>
             ))}
           </ul>
-          <button className="products__arrow products__arrow--next" type="button" aria-label="Próximos produtos" disabled={edges.end} onClick={() => move(1)}>›</button>
+          {!showAll && <button className="products__arrow products__arrow--next" type="button" aria-label="Próximos produtos" disabled={edges.end} onClick={() => move(1)}>›</button>}
         </div>
       ) : <p className="products__empty">Nenhum produto disponível nesta categoria.</p>}
-      <dialog className="product-modal" ref={dialog} aria-labelledby="product-modal-title" onClick={(event) => {
+      <dialog className="product-modal" ref={dialog} aria-labelledby={modalTitleId} onClick={(event) => {
         if (event.target === event.currentTarget) dialog.current?.close()
       }}>
         <div className="product-modal__content">
@@ -92,7 +102,7 @@ export default function Products() {
           {selected && <>
             <img className="product-modal__image" src={phone} alt={selected.productName} />
             <div className="product-modal__info" key={selected.productName}>
-              <h2 id="product-modal-title">{selected.productName}</h2>
+              <h2 id={modalTitleId}>{selected.productName}</h2>
               <strong className="product-modal__price">{currency(selected.price)}</strong>
               <p className="product-modal__description">{selected.descriptionShort}</p>
               <details className="product-modal__details">
