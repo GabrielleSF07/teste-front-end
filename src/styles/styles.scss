@@ -1,0 +1,15 @@
+:root {
+  --color-blue: #3019B2;
+  --color-yellow: #F7CA11;
+  --color-purple: #271C47;
+  --color-gray-medium: #9F9F9F;
+  --color-gray-dark: #4E4E4E;
+  --color-white: #ffffff;
+
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+}
