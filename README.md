@@ -1,31 +1,35 @@
-# Teste Econverse: Vaga Desenvolvedor Front-End
+# Teste Front-End Econverse
 
-### Vem ser #Econverse!
+Página de vitrine desenvolvida com React, TypeScript, Vite e Sass, com carrosséis de produtos, modal de detalhes, categorias, parceiros, marcas e formulário de newsletter. O layout foi implementado para desktop.
 
-Segue abaixo as instruções para a execução do teste.
+## Requisitos
 
-## Instruções
-- Faça um fork desse projeto para a sua conta pessoal do GitHub.
-- Desenvolva a página conforme as **Especificações Técnicas** 
-- Crie um README com as instruções para compilar, testar e rodar o projeto.
-- O link do repositório deverá ser enviado para o e-mail gustavo.cipriano@econverse.com.br com o título **Teste Vaga FrontEnd**
+- Node.js 24 (versão usada no desenvolvimento).
+- npm, incluído na instalação do Node.js.
+- Navegador atualizado.
 
-## Especificações Técnicas
-- Desenvolver a pagina em React e TypeScript conforme o [layout](https://www.figma.com/file/rWnzPeoxgynuNPsJjV0VmV/Teste-Front-End-Jr?node-id=0%3A1). Para conseguir pegar os elementos do Figma, basta copiar o layout para sua conta que terá acesso de edição.
-- Montar a [vitrine](https://app.econverse.com.br/teste-front-end/junior/tecnologia/layout/vitrine-produtos.png) de produtos consumindo as informações dos produtos em json atraves desse [Link](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json).
-- Desenvolver a interação ao clicar em um produto conforme layout. A interação consiste em abrir um modal com as principais informações do produto presente no arquivo [JSON](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json) conforme o produto que clicar.
-- Utilizar Pré-processador Sass, Less ou Stylus.
-- Respeitar o Layout pixel a pixel, tamanho das fontes, cores e botões.
-- Não Utilizar bibliotecas UI como Bootstrap, Foundation, ou afins.
+Execute os comandos abaixo na pasta que contém o `package.json`. Se estiver na pasta `teste-econverse`, entre antes em `teste-front-end`:
 
-## Pontos Extras
-- Utilizar Boas práticas de SEO
-- Uso de HTML semântico
+```bash
+cd teste-front-end
+```
 
-## O que avaliaremos em seu teste
-- Organização do projeto
-- Lógica do código
-- Componentização
-- Alcance dos objetivos propostos
+No PowerShell, caso a execução de `npm.ps1` esteja bloqueada, use `npm.cmd` no lugar de `npm` em todos os comandos abaixo.
 
-**Boa sorte! ;)**
+## Instalar as dependências
+
+```bash
+npm ci
+```
+
+O comando instala as versões registradas no `package-lock.json`. Não é necessário configurar variáveis de ambiente.
+
+## Rodar em desenvolvimento
+
+```bash
+npm run dev
+```
+
+Abra o endereço informado no terminal, normalmente `http://localhost:5173`. O Vite atualiza a página ao salvar alterações. Para encerrar, pressione `Ctrl+C` no terminal.
+
+
